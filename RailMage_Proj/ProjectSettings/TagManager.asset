@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 783163131
+    locked: 0
+  - name: VisualEffects
+    uniqueID: 1810540737
+    locked: 0
