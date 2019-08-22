@@ -14,8 +14,8 @@ public class PlayerMechanics : MonoBehaviour
     [SerializeField] float playerSpeed;
 
     [Header("Moves")]
-    [SerializeField] MagicAttack[] magicAttacks;
-    int currentlySelectedAttack = 0;
+    public MagicAttack[] magicAttacks;
+    public static MagicAttack currentlySelectedAttack;
     bool currentlyShooting = false;
 
     [SerializeField] GameObject hitEffect;
@@ -25,6 +25,7 @@ public class PlayerMechanics : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         globalHitEffect = hitEffect;
+        currentlySelectedAttack = magicAttacks[0];
     }
 
     void Start()
@@ -45,12 +46,10 @@ public class PlayerMechanics : MonoBehaviour
     {
         currentlyShooting = true;
 
-        MagicAttack currentMagicAttack = magicAttacks[currentlySelectedAttack];
-
         playerAC.SetBool("Attacking", true);
         playerRB.velocity = Vector2.zero;
 
-        Destroy(Instantiate(currentMagicAttack.handEffect, shootFromPos), 1f);
+        Destroy(Instantiate(currentlySelectedAttack.handEffect, shootFromPos), 1f);
 
         Vector3 pointDirection = (cam.ScreenToWorldPoint(Input.mousePosition) - shootFromPos.position);
         Vector3 rotDirection = pointDirection.normalized;
@@ -58,13 +57,13 @@ public class PlayerMechanics : MonoBehaviour
         pointDirection = pointDirection.normalized;
         Debug.Log(pointDirection);
 
-        yield return new WaitForSeconds(currentMagicAttack.projectileDrawDelay);
+        yield return new WaitForSeconds(currentlySelectedAttack.projectileDrawDelay);
 
-        GameObject projectile = Instantiate(currentMagicAttack.projectile, shootFromPos);
-        projectile.GetComponent<Rigidbody2D>().velocity = pointDirection * currentMagicAttack.projectileSpeed;
+        GameObject projectile = Instantiate(currentlySelectedAttack.projectile, shootFromPos);
+        projectile.GetComponent<Rigidbody2D>().velocity = pointDirection * currentlySelectedAttack.projectileSpeed;
         projectile.transform.rotation = Quaternion.LookRotation(rotDirection, Vector3.forward);
 
-        yield return new WaitForSeconds(currentMagicAttack.attackDelay);
+        yield return new WaitForSeconds(currentlySelectedAttack.attackDelay);
 
         playerRB.velocity = Vector2.down * playerSpeed;
         playerAC.SetBool("Attacking", false);

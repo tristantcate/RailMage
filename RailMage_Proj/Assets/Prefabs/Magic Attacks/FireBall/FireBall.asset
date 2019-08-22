@@ -20,3 +20,4 @@ MonoBehaviour:
   projectileSpeed: 5
   projectileDrawDelay: 0.25
   attackDelay: 0.3
+  icon: {fileID: 4881930975423679016, guid: 05e2ab9df52baae4c8e476023960bcb6, type: 3}

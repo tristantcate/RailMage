@@ -13,4 +13,6 @@ public class MagicAttack : ScriptableObject
 
     public float projectileDrawDelay;
     public float attackDelay;
+
+    public Sprite icon;
 }
