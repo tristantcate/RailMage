@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IProjectileHittable
 {
-    void OnProjectileHit();
+    void OnProjectileHit(Projectile projectile);
 }

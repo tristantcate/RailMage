@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: FireBall
   m_EditorClassIdentifier: 
   baseDamage: 3
-  handEffect: {fileID: 0}
+  handEffect: {fileID: 826261386037095133, guid: 7c26b62a9a2eed442b60dc8cba8fc5ae,
+    type: 3}
   projectile: {fileID: 3206310322871596618, guid: 6deca43b6f76b0b4d97c012a8a39c9da,
     type: 3}
   projectileSpeed: 5
-  projectileDrawDelay: 0.15
+  projectileDrawDelay: 0.25
   attackDelay: 0.3

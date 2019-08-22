@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: 7da26fde205877b498ae4ddd95d7f1d6
+guid: 970ec8986690b234899f89b51d734263
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8262534425414574923
-    second: FireBall_0
+      213: 8781655135238591612
+    second: FireHandEffect_0
   - first:
-      213: -2299098130814001419
-    second: FireBall_1
+      213: 158551477271384408
+    second: FireHandEffect_1
   - first:
-      213: 4273675971853563962
-    second: FireBall_2
+      213: -3914685173239521309
+    second: FireHandEffect_2
   - first:
-      213: 2109011874299604264
-    second: FireBall_3
+      213: -2101638179368976689
+    second: FireHandEffect_3
   - first:
-      213: 4655004638614694147
-    second: FireBall_4
+      213: 4782808181975423739
+    second: FireHandEffect_4
+  - first:
+      213: -5930787196760451900
+    second: FireHandEffect_5
+  - first:
+      213: 1463666561410781286
+    second: FireHandEffect_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -75,7 +81,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -87,7 +93,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -99,7 +105,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 256
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -113,106 +119,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireBall_0
+      name: FireHandEffect_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.485, y: 0.515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b87a60335cbc1479e88cf24e45920e
+      internalID: 8781655135238591612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireHandEffect_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.485, y: 0.515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb93d22c3d9f394188dffc8c10aa689
+      internalID: 158551477271384408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireHandEffect_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.485, y: 0.515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebeb8961adf217d41a9e8cf6a4fb5484
+      internalID: -3914685173239521309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireHandEffect_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.485, y: 0.515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7116c5b2151e64cbbe4be774f98671
+      internalID: -2101638179368976689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireHandEffect_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.485, y: 0.515}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0398a90ecf59b7b42a6403396f2bf18b
-      internalID: -8262534425414574923
+      spriteID: ddad2bf39f7f7d44b8502804deba4023
+      internalID: 4782808181975423739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireBall_1
+      name: FireHandEffect_5
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.485, y: 0.515}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e83dcadb95d9fb4aac8330b25d174ca
-      internalID: -2299098130814001419
+      spriteID: e3d05578f01631f47844a655083492e4
+      internalID: -5930787196760451900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireBall_2
+      name: FireHandEffect_6
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.485, y: 0.515}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e351e82e713e804fbc6b5c3717b1ab1
-      internalID: 4273675971853563962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireBall_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06ff4b7b68abae743b3a0f6407a831c7
-      internalID: 2109011874299604264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireBall_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 365416e2eb915064a947ed6e2f4efaf9
-      internalID: 4655004638614694147
+      spriteID: 37408ae0b2376974c977e2601e9f32d0
+      internalID: 1463666561410781286
       vertices: []
       indices: 
       edges: []

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerMechanics : MonoBehaviour
 {
-
     [Header("Player Components")]
     [SerializeField] Camera cam;
+    [SerializeField] Animator playerAC;
     [SerializeField] Transform shootFromPos;
     Rigidbody2D playerRB;
-    [SerializeField] Animator playerAC;
 
     [Header("Player Variables")]
     [SerializeField] float playerSpeed;
@@ -19,9 +18,13 @@ public class PlayerMechanics : MonoBehaviour
     int currentlySelectedAttack = 0;
     bool currentlyShooting = false;
 
+    [SerializeField] GameObject hitEffect;
+    public static GameObject globalHitEffect;
+
     void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        globalHitEffect = hitEffect;
     }
 
     void Start()
@@ -47,6 +50,8 @@ public class PlayerMechanics : MonoBehaviour
         playerAC.SetBool("Attacking", true);
         playerRB.velocity = Vector2.zero;
 
+        Destroy(Instantiate(currentMagicAttack.handEffect, shootFromPos), 1f);
+
         Vector3 pointDirection = (cam.ScreenToWorldPoint(Input.mousePosition) - shootFromPos.position);
         Vector3 rotDirection = pointDirection.normalized;
         pointDirection.z = 0;
@@ -60,7 +65,6 @@ public class PlayerMechanics : MonoBehaviour
         projectile.transform.rotation = Quaternion.LookRotation(rotDirection, Vector3.forward);
 
         yield return new WaitForSeconds(currentMagicAttack.attackDelay);
-
 
         playerRB.velocity = Vector2.down * playerSpeed;
         playerAC.SetBool("Attacking", false);
