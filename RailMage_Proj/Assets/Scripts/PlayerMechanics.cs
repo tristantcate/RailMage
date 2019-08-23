@@ -14,9 +14,7 @@ public class PlayerMechanics : MonoBehaviour
     [SerializeField] float playerSpeed;
 
     [Header("Moves")]
-    public MagicAttack[] magicAttacks;
-    public static MagicAttack currentlySelectedAttack;
-    bool currentlyShooting = false;
+    public Magic[] magicAttacks;
 
     [SerializeField] GameObject hitEffect;
     public static GameObject globalHitEffect;
@@ -25,7 +23,6 @@ public class PlayerMechanics : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         globalHitEffect = hitEffect;
-        currentlySelectedAttack = magicAttacks[0];
     }
 
     void Start()
@@ -36,38 +33,41 @@ public class PlayerMechanics : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !currentlyShooting) ShootProjectile();
+        if (Input.GetMouseButtonDown(0)) ShootProjectile();
     }
 
-    void ShootProjectile() => StartCoroutine(ShootingProjectile());
+    void ShootProjectile() => StartCoroutine(CastMagic());
     
 
-    IEnumerator ShootingProjectile()
+    IEnumerator CastMagic()
     {
-        currentlyShooting = true;
+        if (GameManager.instance.UIClicked(cam.ScreenToViewportPoint(Input.mousePosition))) yield break;
+        //Debug.Log("ui break: " + GameManager.instance.uiClicked);
+        if (GameManager.instance.selectedAttackBtn.onCooldown) yield break;
+
+
+
+        Magic selectedMagic = GameManager.instance.selectedAttackBtn.heldMagic;
 
         playerAC.SetBool("Attacking", true);
         playerRB.velocity = Vector2.zero;
 
-        Destroy(Instantiate(currentlySelectedAttack.handEffect, shootFromPos), 1f);
+        Destroy(Instantiate(selectedMagic.handEffect, shootFromPos), 1f);
 
         Vector3 pointDirection = (cam.ScreenToWorldPoint(Input.mousePosition) - shootFromPos.position);
         Vector3 rotDirection = pointDirection.normalized;
         pointDirection.z = 0;
         pointDirection = pointDirection.normalized;
-        Debug.Log(pointDirection);
 
-        yield return new WaitForSeconds(currentlySelectedAttack.projectileDrawDelay);
+        yield return new WaitForSeconds(selectedMagic.drawDelay);
 
-        GameObject projectile = Instantiate(currentlySelectedAttack.projectile, shootFromPos);
-        projectile.GetComponent<Rigidbody2D>().velocity = pointDirection * currentlySelectedAttack.projectileSpeed;
+        GameObject projectile = Instantiate(selectedMagic.projectile, shootFromPos);
+        projectile.GetComponent<Rigidbody2D>().velocity = pointDirection * selectedMagic.projectileSpeed;
         projectile.transform.rotation = Quaternion.LookRotation(rotDirection, Vector3.forward);
 
-        yield return new WaitForSeconds(currentlySelectedAttack.attackDelay);
+        yield return new WaitForSeconds(selectedMagic.cooldown);
 
         playerRB.velocity = Vector2.down * playerSpeed;
         playerAC.SetBool("Attacking", false);
-        currentlyShooting = false;
-
     }
 }
