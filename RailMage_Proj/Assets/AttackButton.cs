@@ -6,16 +6,16 @@ using UnityEngine.EventSystems;
 
 public class AttackButton : MonoBehaviour, IPointerClickHandler
 {
-    public Magic heldMagic;
+    [HideInInspector]public Magic heldMagic;
     Image buttonIcon;
     Button button;
 
     #region Cooldown Variables
 
-    public bool onCooldown; //Other scripts can check this to see if the ability is on cooldown
+    [HideInInspector]public bool onCooldown; //Other scripts can check this to see if the ability is on cooldown
     WaitForSeconds cooldownStep;
     float cooldownStepTime = 0.02f;
-    Image cooldownImg;
+    [SerializeField]Image cooldownImg;
 
     #endregion
 
@@ -25,6 +25,7 @@ public class AttackButton : MonoBehaviour, IPointerClickHandler
         button = GetComponent<Button>();
 
         cooldownStep = new WaitForSeconds(cooldownStepTime);
+        cooldownImg.fillAmount = 0;
     }
 
     public void SetThisMagicAttack(Magic toAtk)
@@ -40,6 +41,7 @@ public class AttackButton : MonoBehaviour, IPointerClickHandler
         SelectAtkOnClick();
     }
 
+    public void AtkUsed(float cooldownTime) => StartCoroutine(ButtonCooldown(cooldownTime));
     IEnumerator ButtonCooldown(float cooldownTime)
     {
         onCooldown = true;                     // Makes this ability unusable

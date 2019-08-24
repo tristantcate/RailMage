@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     void Awake()
     {
         projectileAC = GetComponent<Animator>();
-        projectileParticles = GetComponent<ParticleSystem>();
+        if(GetComponent<ParticleSystem>()) projectileParticles = GetComponent<ParticleSystem>();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
     {
         projectileAC.SetTrigger("Hit");
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        projectileParticles.Stop();
+        if (GetComponent<ParticleSystem>()) projectileParticles.Stop();
 
         Destroy(Instantiate(PlayerMechanics.globalHitEffect, transform.position, Quaternion.Euler(0,0,Random.Range(0,360))), 0.33f);
 

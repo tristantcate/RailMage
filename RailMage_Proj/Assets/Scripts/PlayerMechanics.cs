@@ -41,13 +41,13 @@ public class PlayerMechanics : MonoBehaviour
 
     IEnumerator CastMagic()
     {
-        if (GameManager.instance.UIClicked(cam.ScreenToViewportPoint(Input.mousePosition))) yield break;
+        if (GameManager.instance.UIClicked(Input.mousePosition)) yield break;
         //Debug.Log("ui break: " + GameManager.instance.uiClicked);
         if (GameManager.instance.selectedAttackBtn.onCooldown) yield break;
 
 
-
         Magic selectedMagic = GameManager.instance.selectedAttackBtn.heldMagic;
+        GameManager.instance.selectedAttackBtn.AtkUsed(selectedMagic.cooldown);
 
         playerAC.SetBool("Attacking", true);
         playerRB.velocity = Vector2.zero;

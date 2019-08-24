@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e6e4c92f45d87645b43904a1f1b9d51, type: 3}
-  m_Name: FireBall
+  m_Name: Bubble Atk
   m_EditorClassIdentifier: 
-  baseDamage: 3
+  baseDamage: 2
   handEffect: {fileID: 826261386037095133, guid: 7c26b62a9a2eed442b60dc8cba8fc5ae,
     type: 3}
-  projectile: {fileID: 3206310322871596618, guid: 6deca43b6f76b0b4d97c012a8a39c9da,
+  projectile: {fileID: 3524404554661925209, guid: d5f8de5de6913284aaedcc4d76805a12,
     type: 3}
-  projectileSpeed: 5
-  drawDelay: 0.1
-  cooldown: 0.2
-  icon: {fileID: 4881930975423679016, guid: 05e2ab9df52baae4c8e476023960bcb6, type: 3}
+  projectileSpeed: 2
+  drawDelay: 0.2
+  cooldown: 0.8
+  icon: {fileID: -4737869033082480480, guid: 05e2ab9df52baae4c8e476023960bcb6, type: 3}
