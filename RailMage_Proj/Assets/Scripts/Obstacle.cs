@@ -7,6 +7,6 @@ public class Obstacle : MonoBehaviour, IProjectileHittable
     public void OnProjectileHit(Projectile projectile)
     {
         Debug.Log("Obstacle Hit");
-        projectile.ObstacleHit();
+        projectile.OnHit();
     }
 }

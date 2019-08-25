@@ -13,6 +13,7 @@ public class Magic : ScriptableObject
 
     public float drawDelay;
     public float cooldown;
+    public float standstillTime;
 
     public Sprite icon;
 }

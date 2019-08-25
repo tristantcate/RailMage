@@ -3097,7 +3097,7 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   playerAC: {fileID: 793509133}
   shootFromPos: {fileID: 1927013433}
-  playerSpeed: 2
+  playerSpeed: 1.5
   magicAttacks:
   - {fileID: 11400000, guid: 8cc8be3e30068384d8dd90af8b2c04f8, type: 2}
   - {fileID: 11400000, guid: 26afaaa832fb5a5418af3cb7f560b74d, type: 2}

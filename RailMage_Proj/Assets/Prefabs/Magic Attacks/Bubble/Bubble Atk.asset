@@ -20,4 +20,5 @@ MonoBehaviour:
   projectileSpeed: 2
   drawDelay: 0.2
   cooldown: 0.8
+  standstillTime: 0.5
   icon: {fileID: -4737869033082480480, guid: 05e2ab9df52baae4c8e476023960bcb6, type: 3}

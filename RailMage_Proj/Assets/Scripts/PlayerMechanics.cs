@@ -42,31 +42,27 @@ public class PlayerMechanics : MonoBehaviour
     IEnumerator CastMagic()
     {
         if (GameManager.instance.UIClicked(Input.mousePosition)) yield break;
-        //Debug.Log("ui break: " + GameManager.instance.uiClicked);
         if (GameManager.instance.selectedAttackBtn.onCooldown) yield break;
 
 
         Magic selectedMagic = GameManager.instance.selectedAttackBtn.heldMagic;
         GameManager.instance.selectedAttackBtn.AtkUsed(selectedMagic.cooldown);
-
-        playerAC.SetBool("Attacking", true);
-        playerRB.velocity = Vector2.zero;
+        StartCoroutine(PausePlayerWalk(selectedMagic.standstillTime));
 
         Destroy(Instantiate(selectedMagic.handEffect, shootFromPos), 1f);
-
-        Vector3 pointDirection = (cam.ScreenToWorldPoint(Input.mousePosition) - shootFromPos.position);
-        Vector3 rotDirection = pointDirection.normalized;
-        pointDirection.z = 0;
-        pointDirection = pointDirection.normalized;
-
         yield return new WaitForSeconds(selectedMagic.drawDelay);
 
         GameObject projectile = Instantiate(selectedMagic.projectile, shootFromPos);
-        projectile.GetComponent<Rigidbody2D>().velocity = pointDirection * selectedMagic.projectileSpeed;
-        projectile.transform.rotation = Quaternion.LookRotation(rotDirection, Vector3.forward);
+        projectile.GetComponent<Projectile>().OnSpawned(selectedMagic);
 
         yield return new WaitForSeconds(selectedMagic.cooldown);
+    }
 
+    IEnumerator PausePlayerWalk(float pauseTime)
+    {
+        playerRB.velocity = Vector2.zero;
+        playerAC.SetBool("Attacking", true);
+        yield return new WaitForSeconds(pauseTime);
         playerRB.velocity = Vector2.down * playerSpeed;
         playerAC.SetBool("Attacking", false);
     }

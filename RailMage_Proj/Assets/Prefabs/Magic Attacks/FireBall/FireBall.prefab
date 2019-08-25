@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3206310322871596617}
   - component: {fileID: 3206310322871596616}
   - component: {fileID: 3206310322871596619}
-  - component: {fileID: 3206310322871596610}
   - component: {fileID: 3206310322871596621}
   - component: {fileID: 3206310322871596620}
   - component: {fileID: 3206310322871596623}
+  - component: {fileID: 982483599219336078}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -124,18 +124,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16461167
---- !u!114 &3206310322871596610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3206310322871596618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac95d0e17c42b74c91f55cb5d650342, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &3206310322871596621
 Animator:
   serializedVersion: 3
@@ -4885,3 +4873,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &982483599219336078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206310322871596618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea980a26429395c428c74f9aa1c583f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,29 +5,34 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     Animator projectileAC;
-    ParticleSystem projectileParticles;
-
 
     void Awake()
     {
         projectileAC = GetComponent<Animator>();
-        if(GetComponent<ParticleSystem>()) projectileParticles = GetComponent<ParticleSystem>();
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         col.GetComponent<IProjectileHittable>()?.OnProjectileHit(this);
-        Debug.Log("Hit something");
     }
 
-    public void ObstacleHit()
+    public virtual void OnHit()
     {
         projectileAC.SetTrigger("Hit");
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        if (GetComponent<ParticleSystem>()) projectileParticles.Stop();
-
-        Destroy(Instantiate(PlayerMechanics.globalHitEffect, transform.position, Quaternion.Euler(0,0,Random.Range(0,360))), 0.33f);
+        Destroy(Instantiate(PlayerMechanics.globalHitEffect, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360))), 0.33f);
 
         Destroy(this.gameObject, 0.3f);
+    }
+
+    public virtual void OnSpawned(Magic magicUsed)
+    {
+        Vector3 pointDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+        Vector3 rotDirection = pointDirection.normalized;
+        pointDirection.z = 0;
+        pointDirection = pointDirection.normalized;
+
+        GetComponent<Rigidbody2D>().velocity = pointDirection * magicUsed.projectileSpeed;
+        transform.rotation = Quaternion.LookRotation(rotDirection, Vector3.forward);
     }
 }
