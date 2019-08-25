@@ -29,6 +29,8 @@ public class PlayerMechanics : MonoBehaviour
     {
         playerRB.velocity = Vector2.down * playerSpeed;
         playerAC.SetBool("Moving", true);
+
+        LevelStart();
     }
 
     void Update()
@@ -38,6 +40,18 @@ public class PlayerMechanics : MonoBehaviour
 
     void ShootProjectile() => StartCoroutine(CastMagic());
     
+    public void LevelStart()
+    {
+        StartCoroutine(WaitForLevelBeaten());
+    }
+
+    IEnumerator WaitForLevelBeaten()
+    {
+        WaitUntil waitUntilFinishReached = new WaitUntil(() => transform.position.y < GameManager.instance.LevelEndPos());
+        yield return waitUntilFinishReached;
+        Debug.Log("FINISH!");
+    }
+
 
     IEnumerator CastMagic()
     {

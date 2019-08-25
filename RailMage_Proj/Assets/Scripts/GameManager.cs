@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public AttackButton selectedAttackBtn;
     [SerializeField] GameObject attackBtnSelectedSprite;
 
+    [SerializeField]LevelSpecs currentLevelSpecs;
+    [SerializeField] GameObject[] Levels;
+
     void Start()
     {
         attackBtns[0].SetThisMagicAttack(playerMechanics.magicAttacks[0]);
@@ -42,6 +45,17 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public float LevelEndPos() => currentLevelSpecs.playerFinishPos.position.y;
+
+    public float NormalisedDistanceToEnd()
+    {
+        float totalStageLength = currentLevelSpecs.playerStartPos.position.y - currentLevelSpecs.playerFinishPos.position.y;
+        totalStageLength = Mathf.Abs(totalStageLength);
+
+        return (totalStageLength - (Mathf.Abs(currentLevelSpecs.playerFinishPos.position.y - playerMechanics.transform.position.y))) / totalStageLength;
+
     }
 
 }
