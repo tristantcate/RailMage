@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     Animator projectileAC;
+    Magic thisMagic;
 
     void Awake()
     {
@@ -13,7 +14,13 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        col.GetComponent<IProjectileHittable>()?.OnProjectileHit(this);
+        IProjectileHittable hitComponent = col.GetComponent<IProjectileHittable>();
+        if(hitComponent != null)
+        {
+            hitComponent.OnProjectileHit(thisMagic);
+            OnHit();
+        }
+
     }
 
     public virtual void OnHit()
@@ -27,6 +34,8 @@ public class Projectile : MonoBehaviour
 
     public virtual void OnSpawned(Magic magicUsed)
     {
+        thisMagic = magicUsed;
+
         Vector3 pointDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         Vector3 rotDirection = pointDirection.normalized;
         pointDirection.z = 0;

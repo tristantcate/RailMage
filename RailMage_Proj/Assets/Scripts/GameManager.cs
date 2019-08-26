@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]LevelSpecs currentLevelSpecs;
     [SerializeField] GameObject[] Levels;
 
+    [Header("Healthbar Colors")]
+    public Color fullColor;
+    public Color emptyColor;
+
     void Start()
     {
         attackBtns[0].SetThisMagicAttack(playerMechanics.magicAttacks[0]);
@@ -58,4 +62,5 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public Vector3 GetPlayerPos() => playerMechanics.transform.position;
 }

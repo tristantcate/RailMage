@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, IProjectileHittable
 {
-    public void OnProjectileHit(Projectile projectile)
+    public void OnProjectileHit(Magic usedMagic)
     {
-        Debug.Log("Obstacle Hit");
-        projectile.OnHit();
     }
 }
